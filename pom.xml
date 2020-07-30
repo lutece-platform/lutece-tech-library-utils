@@ -35,6 +35,7 @@
     <properties>
         <jiraProjectName>LIBUTILS</jiraProjectName>
         <jiraComponentId>16250</jiraComponentId>
+        <sonar.sources>pom.xml,src/java</sonar.sources>
     </properties>
 
     <scm>
