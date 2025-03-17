@@ -33,15 +33,18 @@
  */
 package fr.paris.lutece.plugins.algo;
 
+import org.junit.jupiter.api.Test;
+
 import fr.paris.lutece.plugins.utils.algo.DetectCycleAlgo;
 import fr.paris.lutece.plugins.utils.algo.helper.DetectCycleGraphBuilder;
-import junit.framework.TestCase;
+import fr.paris.lutece.test.LuteceTestCase;
 
-public class DetecCycleAlgoTest extends TestCase
+public class DetecCycleAlgoTest extends LuteceTestCase
 {
     /**
      * A -> B -> C
      */
+	@Test
     public void testSimpleGraph( )
     {
         DetectCycleAlgo algo = DetectCycleGraphBuilder.builder( ).addToGraph( 1, 2 ).addToGraph( 2, 3 ).build( );
@@ -52,6 +55,7 @@ public class DetecCycleAlgoTest extends TestCase
     /**
      * A -> B -> A
      */
+	@Test
     public void testSimpleCycle( )
     {
         DetectCycleAlgo algo = DetectCycleGraphBuilder.builder( ).addToGraph( 1, 2 ).addToGraph( 2, 1 ).build( );
@@ -63,6 +67,7 @@ public class DetecCycleAlgoTest extends TestCase
      * A -> B -> C <br>
      * A -> D - > E - > 
      */
+	@Test
     public void testBranchGraph_OK( )
     {
         DetectCycleAlgo algo = DetectCycleGraphBuilder.builder( ).addToGraph( 1, 2 ).addToGraph( 2, 3 ).addToGraph( 1, 4 ).addToGraph( 4, 5 ).addToGraph( 5, 3 )
@@ -75,6 +80,7 @@ public class DetecCycleAlgoTest extends TestCase
      * A -> B -> C <br>
      * A -> D - > E - > A
      */
+	@Test
     public void testBranchGraph_KO( )
     {
         DetectCycleAlgo algo = DetectCycleGraphBuilder.builder( ).addToGraph( 4, 5 ).addToGraph( 1, 4 ).addToGraph( 5, 1 ).addToGraph( 2, 3 ).addToGraph( 1, 2 )
@@ -86,6 +92,7 @@ public class DetecCycleAlgoTest extends TestCase
     /**
      * A -> A
      */
+	@Test
     public void testSelfCycle( )
     {
         DetectCycleAlgo algo = DetectCycleGraphBuilder.builder( ).addToGraph( 1, 1 ).build( );
